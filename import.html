@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="On the Upload page, select the format that matches your abundance data.">
+<title>Import data | MSLipidMapper Tutorial</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to main content</a>
+<header><div class="top"><a class="brand" href="index.html"><strong>MSLipidMapper</strong><span>Tutorial</span></a><a class="source" href="https://github.com/systemsomicslab/MSLipidMapper">GitHub ↗</a></div></header>
+<div class="layout">
+<nav class="chapters" aria-label="Chapters"><p>Tutorial</p><a href="index.html">Introduction</a>
+<a href="setup.html">Installation and setup</a>
+<a href="import.html" aria-current="page">Import data</a>
+<a href="analysis.html">Normalization and exploration</a>
+<a href="pathway.html">Pathway maps and export</a></nav>
+<main id="content">
+<h1>Import data</h1>
+<p class="lead">On the Upload page, select the format that matches your abundance data.</p>
+<section aria-labelledby="example"><h2 id="example">Import the example dataset</h2><ol><li>Open <a href="https://github.com/systemsomicslab/MSLipidMapper/blob/178a6e9c1d9c809c4e57834aca4fce86e7451503/inst/extdata/examples/Lipid_AlignmentTable.csv">Lipid_AlignmentTable.csv</a> and save it using GitHub's Raw or Download button.</li><li>On the Upload page, select MS-DIAL Alignment Table CSV and choose the downloaded file.</li><li>Check the imported sample names and groups, then select the samples to include in your analysis.</li></ol></section>
+<section aria-labelledby="msdial"><h2 id="msdial">Import MS-DIAL output</h2><p>Keep the original multi-row header and annotation columns in the Alignment Table CSV exported by MS-DIAL. For an mzTab-M file (<code>.mztab</code>), select the corresponding format on the Upload page.</p></section>
+<section aria-labelledby="generic"><h2 id="generic">Import generic CSV files</h2><p>Prepare an abundance table and a separate feature annotation table. In the abundance table, use one row per sample and one column per lipid. Include <code>sample_id</code> and, optionally, <code>class</code>.</p><pre><code>sample_id,class,lipid_001,lipid_002
+Sample_1,Control,1200,820
+Sample_2,Treatment,950,1100</code></pre><p>In the annotation table, provide a unique key matching each lipid abundance column and a display label for each feature. Use a LIPID MAPS ID or an Ontology value to map features to pathway classes. When both are supplied, Ontology takes precedence.</p></section>
+<nav class="pager" aria-label="Previous and next chapters"><a href="setup.html">← Installation and setup</a><a href="analysis.html">Normalization and exploration →</a></nav>
+</main>
+<nav class="toc" aria-label="Page contents"><p>On this page</p><a href="#example">Import the example dataset</a>
+<a href="#msdial">Import MS-DIAL output</a>
+<a href="#generic">Import generic CSV files</a></nav>
+</div>
+<footer>MSLipidMapper · <a href="https://github.com/systemsomicslab">Systemomics Lab</a></footer>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Run MSLipidMapper as an R package or in a Docker container.">
+<title>Installation and setup | MSLipidMapper Tutorial</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to main content</a>
+<header><div class="top"><a class="brand" href="index.html"><strong>MSLipidMapper</strong><span>Tutorial</span></a><a class="source" href="https://github.com/systemsomicslab/MSLipidMapper">GitHub ↗</a></div></header>
+<div class="layout">
+<nav class="chapters" aria-label="Chapters"><p>Tutorial</p><a href="index.html">Introduction</a>
+<a href="setup.html" aria-current="page">Installation and setup</a>
+<a href="import.html">Import data</a>
+<a href="analysis.html">Normalization and exploration</a>
+<a href="pathway.html">Pathway maps and export</a></nav>
+<main id="content">
+<h1>Installation and setup</h1>
+<p class="lead">Run MSLipidMapper as an R package or in a Docker container.</p>
+<section aria-labelledby="r"><h2 id="r">Run as an R package</h2><p>Install R 4.3 or later, then run the following commands in the R console.</p><pre><code>install.packages(c("BiocManager", "remotes"))
+BiocManager::install(c(
+  "SummarizedExperiment", "S4Vectors", "ComplexHeatmap",
+  "clusterProfiler", "GO.db", "ropls", "rgoslin"
+), ask = FALSE, update = FALSE)
+remotes::install_github("systemsomicslab/MSLipidMapper", dependencies = TRUE)
+MSLipidMapper::run_mslipidmapper()</code></pre><p>Once the app starts, open <a href="http://localhost:3838">http://localhost:3838</a> in your browser.</p></section>
+<section aria-labelledby="docker"><h2 id="docker">Run with Docker</h2><p>Start Docker Desktop or another Docker runtime, then run these commands in a terminal.</p><pre><code>git clone https://github.com/systemsomicslab/MSLipidMapper.git
+cd MSLipidMapper
+docker build -t mslipidmapper .
+docker run --rm -p 3838:3838 -p 7310:7310 mslipidmapper</code></pre><p>Open <a href="http://localhost:3838">http://localhost:3838</a> in your browser. On Windows, you can also build and launch the container with the included <code>MSLipidMapper.bat</code> file.</p></section>
+<nav class="pager" aria-label="Previous and next chapters"><a href="index.html">← Introduction</a><a href="import.html">Import data →</a></nav>
+</main>
+<nav class="toc" aria-label="Page contents"><p>On this page</p><a href="#r">Run as an R package</a>
+<a href="#docker">Run with Docker</a></nav>
+</div>
+<footer>MSLipidMapper · <a href="https://github.com/systemsomicslab">Systemomics Lab</a></footer>
+</body>
+</html>

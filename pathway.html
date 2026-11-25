@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="View abundances aggregated by lipid class on a pathway map and save your results.">
+<title>Pathway maps and export | MSLipidMapper Tutorial</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to main content</a>
+<header><div class="top"><a class="brand" href="index.html"><strong>MSLipidMapper</strong><span>Tutorial</span></a><a class="source" href="https://github.com/systemsomicslab/MSLipidMapper">GitHub ↗</a></div></header>
+<div class="layout">
+<nav class="chapters" aria-label="Chapters"><p>Tutorial</p><a href="index.html">Introduction</a>
+<a href="setup.html">Installation and setup</a>
+<a href="import.html">Import data</a>
+<a href="analysis.html">Normalization and exploration</a>
+<a href="pathway.html" aria-current="page">Pathway maps and export</a></nav>
+<main id="content">
+<h1>Pathway maps and export</h1>
+<p class="lead">View abundances aggregated by lipid class on a pathway map and save your results.</p>
+<section aria-labelledby="map"><h2 id="map">View lipid metabolism pathways</h2><ol><li>Open <strong>Pathway Analysis</strong> and select a pathway network.</li><li>Choose the dataset, groups to compare, and any lipid filters, then apply the settings.</li><li>Select a lipid class node to inspect its abundance data.</li></ol><p><a href="https://github.com/systemsomicslab/MSLipidMapper/blob/178a6e9c1d9c809c4e57834aca4fce86e7451503/docs/pathway-workspace.md">Pathway workspace documentation</a></p></section>
+<section aria-labelledby="export"><h2 id="export">Export figures and save your project</h2><p>Use the export controls on each analysis page to save figures. To save your workspace, open <strong>Project file</strong> and select <strong>Prepare project file</strong>. When the file is ready, select <strong>Download prepared project</strong> to save the <code>.mslm.rds</code> file. To resume your work, select <strong>Restore project (.mslm.rds)</strong> on the same page.</p><p><a href="https://github.com/systemsomicslab/MSLipidMapper/blob/178a6e9c1d9c809c4e57834aca4fce86e7451503/docs/project-files.md">What a project file contains</a></p></section>
+<section aria-labelledby="batch"><h2 id="batch">Export a pathway PDF from the command line</h2><p>Use a YAML configuration file to generate pathway PDFs with the same settings from the command line.</p><pre><code>Rscript inst/scripts/mslipidmapper.R pathway --config inst/extdata/examples/pathway-cli.yml</code></pre><p>Install the package, then run this example from the MSLipidMapper source directory. <a href="https://github.com/systemsomicslab/MSLipidMapper/blob/178a6e9c1d9c809c4e57834aca4fce86e7451503/README.md#command-line-pathway-mapping">Command-line options</a></p></section>
+<nav class="pager" aria-label="Previous and next chapters"><a href="analysis.html">← Normalization and exploration</a></nav>
+</main>
+<nav class="toc" aria-label="Page contents"><p>On this page</p><a href="#map">View lipid metabolism pathways</a>
+<a href="#export">Export figures and save your project</a>
+<a href="#batch">Export a pathway PDF from the command line</a></nav>
+</div>
+<footer>MSLipidMapper · <a href="https://github.com/systemsomicslab">Systemomics Lab</a></footer>
+</body>
+</html>
