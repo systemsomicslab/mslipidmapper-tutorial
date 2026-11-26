@@ -46,9 +46,13 @@ footer{text-align:center;padding:1.35rem;border-top:1px solid var(--line);font-s
 @media(max-width:590px){.layout{display:flex;flex-direction:column;align-items:stretch;padding-top:1.15rem;gap:1.2rem}.chapters{position:static;padding-bottom:.65rem;border-bottom:1px solid var(--line)}.chapters p{margin-bottom:.25rem}.chapters a{display:inline-block;padding:.3rem .5rem}.toc{order:1}main{order:2}.top{padding:.8rem 1rem}.pager{font-size:.9rem}}
 /* Import tutorial tables and screenshot spaces */
 .table-scroll{overflow-x:auto}
-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.94rem}
-th,td{text-align:left;vertical-align:top;border-bottom:1px solid var(--line);padding:.65rem}
-th{background:var(--tint)}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.94rem;border:1px solid #b8c9cf}
+th,td{text-align:left;vertical-align:top;border:1px solid #b8c9cf;padding:.75rem .85rem;line-height:1.6}
+th{background:#eaf4f5;color:#172d38;font-weight:700}
+tbody tr:nth-child(even){background:#f7fafb}
+.table-scroll table{min-width:560px}
+.table-scroll th:first-child{width:25%}
+.table-scroll th:nth-child(3){width:23%}
 h3{font-size:1.12rem;margin:1.6rem 0 .6rem}
 .screenshot{margin:1.5rem 0}
 .screenshot-placeholder{min-height:280px;aspect-ratio:16/9;border:2px dashed #91aeb5;border-radius:6px;background:#f2f7f8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;padding:1.5rem;text-align:center;color:#405962}
