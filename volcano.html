@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Compare lipid fold changes and statistical significance between two groups.">
+<title>Volcano | MSLipidMapper Tutorial</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to main content</a>
+<header><div class="top"><a class="brand" href="index.html"><strong>MSLipidMapper</strong><span>Tutorial</span></a><a class="source" href="https://github.com/systemsomicslab/MSLipidMapper">GitHub ↗</a></div></header>
+<div class="layout">
+<nav class="chapters" aria-label="Chapters"><p>Tutorial</p><a href="index.html">Introduction</a>
+<a href="setup.html">Installation and setup</a>
+<a href="import.html">Import data</a>
+<a href="normalization.html">Normalization</a>
+<a href="analysis.html">Analysis overview</a>
+<a href="pca.html">PCA</a>
+<a href="oplsda.html">OPLS-DA</a>
+<a href="feature.html">Feature</a>
+<a href="heatmap.html">Heatmap</a>
+<a href="correlation.html">Correlation</a>
+<a href="volcano.html" aria-current="page">Volcano</a>
+<a href="figure-settings.html">Figure settings</a>
+<a href="pathway.html">Pathway maps and export</a>
+</nav>
+<main id="content"><h1>Volcano</h1><p class="lead">Compare lipid fold changes and statistical significance between two groups.</p><section aria-labelledby="run"><h2 id="run">Configure the comparison</h2>
+<p>Open <strong>3. Analysis → Volcano</strong>.</p>
+<ol><li>Select <strong>Lipid</strong> under <strong>Dataset</strong>.</li><li>Set <strong>Group A (baseline)</strong> to <strong>Female</strong> and <strong>Group B (compare)</strong> to <strong>Male</strong>.</li><li>Set <strong>Test</strong> to <strong>wilcox</strong> and <strong>P-value adjustment</strong> to <strong>BH</strong> for this example.</li><li>Under <strong>P-value used in volcano</strong>, select <strong>Adjusted (padj)</strong>.</li><li>Set <strong>P-value threshold</strong> to <code>0.05</code> and <strong>FC threshold (&gt;=1, numeric)</strong> to <code>2</code>.</li><li>Set <strong>View</strong> to <strong>plotly</strong> and click <strong>Run</strong>.</li></ol><figure class="screenshot"><a href="assets/volcano-settings-result.png"><img src="assets/volcano-settings-result.png" alt="Volcano settings comparing Male against Female using Wilcoxon, BH-adjusted p-values, threshold 0.05, and fold-change threshold 2, beside an interactive volcano plot." loading="lazy"></a><figcaption>Volcano plot for Male versus Female using BH-adjusted p-values and a twofold cutoff.</figcaption></figure></section><section aria-labelledby="interpret"><h2 id="interpret">Read the volcano plot</h2>
+<p>Each point represents a lipid feature. The horizontal axis is <strong>log2FC (mean Male / mean Female)</strong>. Positive values indicate higher mean abundance in Male samples and negative values indicate higher mean abundance in Female samples.</p>
+<p>The vertical axis is <strong>−log10(adjusted p)</strong> for the illustrated settings. Higher points have smaller adjusted p-values. BH denotes Benjamini–Hochberg multiple-testing correction.</p>
+<p>The vertical dashed lines mark log₂FC values of −1 and +1, corresponding to the twofold cutoff. The horizontal dashed line marks the adjusted p-value threshold of 0.05. Red <strong>Up</strong> points and blue <strong>Down</strong> points meet the selected significance and fold-change criteria. Gray <strong>NS</strong> points fail at least one criterion.</p></section>
+<section aria-labelledby="table"><h2 id="table">Inspect individual results</h2>
+<p>Use the interactive plot to inspect points, and open the <strong>Table</strong> tab to review feature-level results. Use <strong>Figure settings</strong> to adjust the plot appearance.</p></section><nav class="pager" aria-label="Previous and next chapters"><a href="correlation.html">← Correlation</a><a href="figure-settings.html">Figure settings →</a></nav></main>
+<nav class="toc" aria-label="Page contents"><p>On this page</p><a href="#run">Configure the comparison</a><a href="#interpret">Read the volcano plot</a><a href="#table">Inspect individual results</a></nav>
+</div>
+<footer>MSLipidMapper · <a href="https://github.com/systemsomicslab">Systemomics Lab</a></footer>
+</body>
+</html>

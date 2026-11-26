@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Inspect lipid class and molecule abundances and apply chain filters.">
+<title>Feature | MSLipidMapper Tutorial</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to main content</a>
+<header><div class="top"><a class="brand" href="index.html"><strong>MSLipidMapper</strong><span>Tutorial</span></a><a class="source" href="https://github.com/systemsomicslab/MSLipidMapper">GitHub ↗</a></div></header>
+<div class="layout">
+<nav class="chapters" aria-label="Chapters"><p>Tutorial</p><a href="index.html">Introduction</a>
+<a href="setup.html">Installation and setup</a>
+<a href="import.html">Import data</a>
+<a href="normalization.html">Normalization</a>
+<a href="analysis.html">Analysis overview</a>
+<a href="pca.html">PCA</a>
+<a href="oplsda.html">OPLS-DA</a>
+<a href="feature.html" aria-current="page">Feature</a>
+<a href="heatmap.html">Heatmap</a>
+<a href="correlation.html">Correlation</a>
+<a href="volcano.html">Volcano</a>
+<a href="figure-settings.html">Figure settings</a>
+<a href="pathway.html">Pathway maps and export</a>
+</nav>
+<main id="content">
+<h1>Feature</h1>
+<p class="lead">Inspect lipid class and molecule abundances and apply chain filters.</p>
+<section aria-labelledby="feature">
+<h2 id="feature">Feature plots</h2>
+<p>Open <strong>3. Analysis → Feature</strong> to inspect abundances for a lipid class and an individual molecule across sample groups.</p>
+<h3 id="select-a-class-and-molecule">Select a class and molecule</h3>
+<ol><li>Select <strong>Lipid</strong> under <strong>Dataset</strong>.</li><li>In <strong>Plot settings</strong>, expand <strong>Variable</strong>.</li><li>Set <strong>Lipid class</strong> to <strong>PC</strong> for this example.</li><li>Under <strong>Molecule (in selected class)</strong>, select <strong>PC 16:0_16:0</strong>.</li><li>Review the <strong>Class-level plot</strong> and <strong>Molecule-level plot</strong> side by side.</li></ol>
+<figure class="screenshot"><a href="assets/feature-class-molecule.png"><img src="assets/feature-class-molecule.png" alt="Feature page with PC selected as the lipid class and PC 16:0_16:0 selected as the molecule, showing class-level and molecule-level abundance plots for Female and Male samples." loading="lazy"></a><figcaption>Class-level and molecule-level abundance plots for PC and PC 16:0_16:0.</figcaption></figure>
+<h3 id="read-the-plots">Read the plots</h3>
+<p>The class-level plot summarizes the selected lipid class using the current aggregation settings. The molecule-level plot displays the selected individual lipid. In the illustrated dot plots, each point represents a sample and the black horizontal line marks the group median. The groups are Female and Male, as set during metadata import.</p>
+<p>Inspect the spread within each group alongside differences between groups. In this screenshot, Female samples have higher displayed abundances for both the PC class summary and PC 16:0_16:0.</p>
+<h3 id="adjust-the-view-and-export">Adjust the view and export</h3>
+<p>Expand <strong>Aggregation / Top-N</strong> to review the class summary options, or <strong>Chain filter</strong> to inspect the available chain selection controls. Use <strong>Figure settings</strong> to adjust plot appearance and <strong>Shared: colors / order</strong> to configure group colors and ordering.</p>
+<h3 id="filter-by-chain-or-sphingoid-base">Filter by chain or sphingoid base</h3>
+<p>Expand <strong>Chain filter</strong>. Under <strong>Chain / SPB codes (multi-select)</strong>, select one or more available chain or sphingoid base (SPB) codes, such as <code>18:0</code>, <code>22:6;O2</code>, or <code>SPB18:1;O2</code>.</p>
+<ul><li>With <strong>Require ALL selected chain codes (AND)</strong> unchecked, retain molecules matching any selected code.</li><li>Check <strong>Require ALL selected chain codes (AND)</strong> to retain molecules containing every selected code.</li><li>Check <strong>Remove molecules with odd-carbon chains or SPB</strong> to exclude molecules containing an odd-carbon chain or sphingoid base.</li></ul>
+<p>The filter affects the class plot, molecule plot, heatmap, bar plot, and chain composition in this Feature view. Clear the selected codes and uncheck odd-carbon removal to restore the unfiltered view.</p>
+<figure class="screenshot"><a href="assets/feature-chain-filter.png"><img src="assets/feature-chain-filter.png" alt="Chain filter with a multi-select chain and SPB code field, an AND matching checkbox, and an odd-carbon exclusion checkbox." loading="lazy"></a><figcaption>Select chain or sphingoid base codes and choose the matching conditions.</figcaption></figure>
+<p>Click <strong>Download SVG</strong> below either plot to save that figure.</p>
+</section><p>See <a href="figure-settings.html">Figure settings</a> for shared group colors and display order.</p>
+<nav class="pager" aria-label="Previous and next chapters"><a href="oplsda.html">← OPLS-DA</a><a href="heatmap.html">Heatmap →</a></nav>
+</main>
+<nav class="toc" aria-label="Page contents"><p>On this page</p><a href="#feature">Feature plots</a><a href="#select-a-class-and-molecule">Select a class and molecule</a><a href="#read-the-plots">Read the plots</a><a href="#adjust-the-view-and-export">Adjust the view and export</a><a href="#filter-by-chain-or-sphingoid-base">Filter by chain or sphingoid base</a></nav>
+</div>
+<footer>MSLipidMapper · <a href="https://github.com/systemsomicslab">Systemomics Lab</a></footer>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="On the Upload page, select the format that matches your abundance data.">
+<title>Import data | MSLipidMapper Tutorial</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to main content</a>
+<header><div class="top"><a class="brand" href="index.html"><strong>MSLipidMapper</strong><span>Tutorial</span></a><a class="source" href="https://github.com/systemsomicslab/MSLipidMapper">GitHub ↗</a></div></header>
+<div class="layout">
+<nav class="chapters" aria-label="Chapters"><p>Tutorial</p><a href="index.html">Introduction</a>
+<a href="setup.html">Installation and setup</a>
+<a href="import.html" aria-current="page">Import data</a>
+<a href="normalization.html">Normalization</a>
+<a href="analysis.html">Analysis overview</a>
+<a href="pca.html">PCA</a>
+<a href="oplsda.html">OPLS-DA</a>
+<a href="feature.html">Feature</a>
+<a href="heatmap.html">Heatmap</a>
+<a href="correlation.html">Correlation</a>
+<a href="volcano.html">Volcano</a>
+<a href="figure-settings.html">Figure settings</a>
+<a href="pathway.html">Pathway maps and export</a>
+</nav>
+<main id="content">
+<h1>Import data</h1>
+<p class="lead">Import an MS-DIAL alignment CSV, an MS-DIAL mzTab-M file, or generic abundance and annotation CSV files.</p>
+<section aria-labelledby="formats">
+<h2 id="formats">Choose an input format</h2>
+<p>Open <strong>1. Upload</strong> from the sidebar. Under <strong>Lipidomics data format</strong>, choose the format matching your files.</p>
+<div class="table-scroll"><table><thead><tr><th>Format</th><th>Files to prepare</th></tr></thead><tbody>
+<tr><td>MS-DIAL alignment CSV</td><td>An Alignment Table CSV exported by MS-DIAL, with its original headers and annotation columns.</td></tr>
+<tr><td>MS-DIAL mzTab-M</td><td>An mzTab-M file exported by MS-DIAL (<code>.mztab</code> or <code>.mzTab</code>).</td></tr>
+<tr><td>Generic (wide + LIPID MAPS ID / Ontology)</td><td>An abundance CSV with samples in rows and lipids in columns, plus a feature annotation CSV.</td></tr>
+</tbody></table></div>
+<figure class="screenshot"><a href="assets/upload-formats.png"><img src="assets/upload-formats.png" alt="Upload page showing the three lipidomics input formats, Browse, and Submit controls." loading="lazy"></a><figcaption>Input format selection on the Upload page. Select an image to enlarge it.</figcaption></figure>
+</section>
+<section aria-labelledby="msdial">
+<h2 id="msdial">Import MS-DIAL data</h2>
+<p>Choose either MS-DIAL input format, then use the same upload workflow.</p>
+<div class="table-scroll"><table><thead><tr><th>Input format</th><th>File</th><th>Submit button</th></tr></thead><tbody>
+<tr><td>MS-DIAL alignment CSV</td><td>Alignment Table CSV with the original multi-row header and annotation columns</td><td>Submit (MS-DIAL)</td></tr>
+<tr><td>MS-DIAL mzTab-M</td><td>MS-DIAL mzTab-M export (<code>.mztab</code> or <code>.mzTab</code>)</td><td>Submit (mzTab-M)</td></tr>
+</tbody></table></div>
+<p>For a first walkthrough, download the bundled <a href="https://github.com/systemsomicslab/MSLipidMapper/blob/178a6e9c1d9c809c4e57834aca4fce86e7451503/inst/extdata/examples/Lipid_AlignmentTable.csv">Lipid_AlignmentTable.csv</a> using GitHub's Raw or Download control.</p>
+<ol><li>Under <strong>Lipidomics data format</strong>, select <strong>MS-DIAL alignment CSV</strong> or <strong>MS-DIAL mzTab-M</strong> to match your file.</li><li>Click <strong>Browse...</strong> and select the file.</li><li>Click <strong>Submit (MS-DIAL)</strong> for an alignment CSV, or <strong>Submit (mzTab-M)</strong> for an mzTab-M file.</li><li>Check the imported data under <strong>Summary (analysis samples)</strong>.</li></ol>
+<p>The screenshot below illustrates the shared workflow using the example alignment CSV.</p>
+<figure class="screenshot"><a href="assets/upload-alignment-summary.png"><img src="assets/upload-alignment-summary.png" alt="MS-DIAL alignment CSV import with a summary showing 48 samples, 884 features, and 4 groups." loading="lazy"></a><figcaption>After submitting the example alignment CSV, the summary shows 48 samples, 884 features, and 4 groups.</figcaption></figure>
+</section>
+<section aria-labelledby="generic">
+<h2 id="generic">Generic CSV files</h2>
+<h3>Download the demo files</h3>
+<p>These files were converted from the bundled MS-DIAL alignment CSV. They contain 48 analysis samples, 884 lipid features, and four age groups (2, 12, 19, and 24 months). Blank and quality-control samples are excluded. Abundance values and Ontology annotations are preserved from the source table. Molecular display labels use the annotation after the separator when present.</p>
+<ul><li><a href="assets/data/generic-assay.csv" download>Download the demo Assay CSV</a></li><li><a href="assets/data/generic-features.csv" download>Download the demo Feature annotation CSV</a></li></ul>
+<p>Upload both files. Select <code>sample_id</code> as the sample ID column, <code>class</code> as the class column, <code>feature_id</code> as the feature key, <code>label</code> as the display label, and <code>Ontology</code> as the Ontology column. Leave the LIPID MAPS ID column set to <strong>- none -</strong>, then click <strong>Submit (Generic)</strong>. The summary should show 48 samples, 884 features, and 4 groups.</p>
+<h3>Prepare the abundance table</h3>
+<p>Create a CSV with one row per sample and one column per lipid. Include a sample identifier column and, optionally, a sample group column.</p>
+<pre><code>sample_id,class,lipid_001,lipid_002
+Sample_1,Control,1200,820
+Sample_2,Treatment,950,1100</code></pre>
+<p>The example illustrates the input layout. After you select the sample ID and optional class columns, the remaining columns are treated as lipid abundance measurements and should contain numeric values.</p>
+<h3>Prepare the feature annotation table</h3>
+<p>Provide one unique feature key matching each lipid column in the abundance table, a non-empty display label, and a LIPID MAPS ID or Ontology value. LIPID MAPS IDs are recommended. If both an ID and an Ontology value are supplied, Ontology takes priority for pathway class mapping.</p>
+<p>The following example uses Ontology values for two lipid classes.</p>
+<pre><code>feature_id,label,Ontology
+lipid_001,PC 16:0_18:1,PC
+lipid_002,PE 18:0_20:4,PE</code></pre>
+<p>For ID-based input, add a <code>LIPIDMAPS_ID</code> column containing the actual identifiers for your annotated lipids. Display labels are used in plots. Feature keys link annotation rows to abundance columns.</p>
+<h3>Upload and assign columns</h3>
+<ol><li>Select <strong>Generic (wide + LIPID MAPS ID / Ontology)</strong>.</li><li>Upload your abundance file under <strong>Assay CSV</strong>.</li><li>Set <strong>Sample ID column</strong> to <code>sample_id</code> and <strong>Class column (optional)</strong> to <code>class</code> for the example above. Choose <strong>- none -</strong> if there is no group column.</li><li>Upload your annotation file under <strong>Feature annotation CSV</strong>.</li><li>Set <strong>Feature key column (matches assay column names)</strong> to <code>feature_id</code> and <strong>Display label column (required)</strong> to <code>label</code>. The same column can serve both roles if it contains suitable keys and labels.</li><li>For the Ontology example above, select <code>Ontology</code> under <strong>Ontology column (optional; takes priority)</strong>. For ID-based input, select your ID column under <strong>LIPID MAPS ID column (recommended)</strong>.</li><li>Click <strong>Submit (Generic)</strong> and check <strong>Summary (analysis samples)</strong>.</li></ol>
+<figure class="screenshot"><a href="assets/upload-generic.png"><img src="assets/upload-generic.png" alt="Generic input with generic-assay.csv and generic-features.csv uploaded. Selected columns are sample_id, class, feature_id, label, and Ontology, with no LIPID MAPS ID column selected." loading="lazy"></a><figcaption>Upload the two demo files and assign their columns, then click Submit (Generic).</figcaption></figure>
+<figure class="screenshot"><a href="assets/upload-generic-summary.png"><img src="assets/upload-generic-summary.png" alt="Successful Generic import showing 48 samples, 884 features, and 4 groups in Summary (analysis samples)." loading="lazy"></a><figcaption>After submitting the Generic demo files, the summary shows 48 samples, 884 features, and 4 groups.</figcaption></figure>
+</section>
+<section aria-labelledby="samples">
+<h2 id="samples">Review samples and groups</h2>
+<p>After importing data with any of the three formats, open <strong>2) Edit &amp; Select Samples</strong>.</p>
+<ol><li>Review the sample identifiers and <code>class</code> values in <strong>All samples</strong>.</li><li>Edit sample groups or metadata as needed.</li><li>Use the <code>use</code> column to select the samples to include in analysis.</li><li>If you edited the table, click <strong>Apply changes to analysis</strong>.</li></ol>
+<figure class="screenshot"><a href="assets/edit-select-samples.png"><img src="assets/edit-select-samples.png" alt="Edit and Select Samples page showing the All samples table with sample_id, class, and use columns, and the Apply changes to analysis button." loading="lazy"></a><figcaption>Review sample identifiers and groups, select samples using the use column, and apply any changes to analysis.</figcaption></figure>
+<p>To add sample information from a file, follow <a href="#metadata">Import sample metadata</a> below. Once the sample information is correct, continue to <a href="normalization.html">Normalization</a>.</p>
+</section>
+<section aria-labelledby="metadata">
+<h2 id="metadata">Import sample metadata</h2>
+<p>Use a sample metadata file to add information such as age, sex, or experimental condition and choose the primary grouping variable. This step is available after importing lipidomics data with any supported format.</p>
+<h3>Prepare the metadata file</h3>
+<p>Prepare a CSV or TSV with a header row, one sample ID column, and a primary grouping column. Sample IDs must match the identifiers in the imported lipidomics data. Use one row per sample. Additional columns are imported as sample metadata.</p>
+<p>The screenshot below uses a file named <code>Sample_metadata.csv</code> with the columns <code>name</code>, <code>Year</code>, <code>Sex</code>, and <code>Condition</code>. Here, <code>name</code> contains the sample identifiers and <code>Year</code> is selected as the primary grouping variable.</p>
+<h3>Upload and apply metadata</h3>
+<ol><li>Open <strong>2) Edit &amp; Select Samples</strong> and scroll to the <strong>Import metadata</strong> tab below the sample table.</li><li>Under <strong>Separator</strong>, choose <strong>CSV</strong> or <strong>TSV</strong> to match your file.</li><li>Under <strong>Sample metadata file</strong>, click <strong>Browse...</strong> and select the file. Review the table preview.</li><li>Set <strong>Column for sample_id</strong> to the column containing matching sample identifiers, such as <code>name</code>.</li><li>Set <strong>Primary grouping column</strong> to the variable to use for sample groups, such as <code>Year</code>.</li><li>Click <strong>Apply sample metadata</strong>.</li><li>Read the import status message, then check the <strong>All samples</strong> table for the updated <code>class</code> values and additional metadata columns. Check any reported unmatched sample IDs against your file.</li></ol>
+<p>The selected primary grouping column sets <code>class</code>. Additional metadata columns are merged by sample ID. Applying metadata preserves the current <code>use</code> selections.</p>
+<figure class="screenshot"><a href="assets/import-metadata.png"><img src="assets/import-metadata.png" alt="Import metadata tab with a CSV preview, name selected as the sample ID column, Year selected as the primary grouping column, and the Apply sample metadata button." loading="lazy"></a><figcaption>Import a metadata file and select the sample ID and primary grouping columns before applying it.</figcaption></figure>
+<h3>Check the import result</h3>
+<p>In the example below, <strong>Sex</strong> is selected as the primary grouping column. After clicking <strong>Apply sample metadata</strong>, the status reports <code>Mapped class to 48/48 samples</code>. The sample groups are now based on sex. To group by age instead, select <strong>Year</strong> and apply the metadata again.</p>
+<p>The status also reports <code>Unmatched in SE: 8</code>. These are metadata rows whose sample IDs are absent from the imported dataset. The Generic demo contains only the 48 analysis samples, so metadata rows for the blank and seven QC samples have no match. Review unmatched IDs against your input files when using your own data.</p>
+<figure class="screenshot"><a href="assets/import-metadata-result.png"><img src="assets/import-metadata-result.png" alt="Metadata applied with name as the sample ID and Sex as the primary grouping column. The status reports 48 of 48 samples mapped and eight unmatched metadata sample IDs." loading="lazy"></a><figcaption>Successful metadata mapping to all 48 analysis samples, using Sex as the primary grouping variable.</figcaption></figure>
+<p>Return to <strong>All samples</strong> to verify the applied metadata. In this example, <code>class</code> contains <code>Female</code> and <code>Male</code>, while <code>Year</code>, <code>Sex</code>, and <code>Condition</code> appear as additional columns. The <code>use</code> selections remain checked. The <strong>Apply sample metadata</strong> action has already applied these values. Use <strong>Apply changes to analysis</strong> if you subsequently edit the table.</p>
+<figure class="screenshot"><a href="assets/samples-after-metadata.png"><img src="assets/samples-after-metadata.png" alt="All samples after metadata import, with Female and Male in class, checked use selections, and additional Year, Sex, and Condition columns." loading="lazy"></a><figcaption>Verify the updated class values and additional metadata in the sample table.</figcaption></figure>
+</section>
+<nav class="pager" aria-label="Previous and next chapters"><a href="setup.html">← Installation and setup</a><a href="normalization.html">Normalization →</a></nav>
+</main>
+<nav class="toc" aria-label="Page contents"><p>On this page</p><a href="#formats">Choose an input format</a><a href="#msdial">Import MS-DIAL data</a><a href="#generic">Generic CSV files</a><a href="#samples">Review samples and groups</a><a href="#metadata">Import sample metadata</a></nav>
+</div>
+<footer>MSLipidMapper · <a href="https://github.com/systemsomicslab">Systemomics Lab</a></footer>
+</body>
+</html>

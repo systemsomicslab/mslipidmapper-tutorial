@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Explore lipid class and molecule abundance patterns with heatmaps.">
+<title>Heatmap | MSLipidMapper Tutorial</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to main content</a>
+<header><div class="top"><a class="brand" href="index.html"><strong>MSLipidMapper</strong><span>Tutorial</span></a><a class="source" href="https://github.com/systemsomicslab/MSLipidMapper">GitHub ↗</a></div></header>
+<div class="layout">
+<nav class="chapters" aria-label="Chapters"><p>Tutorial</p><a href="index.html">Introduction</a>
+<a href="setup.html">Installation and setup</a>
+<a href="import.html">Import data</a>
+<a href="normalization.html">Normalization</a>
+<a href="analysis.html">Analysis overview</a>
+<a href="pca.html">PCA</a>
+<a href="oplsda.html">OPLS-DA</a>
+<a href="feature.html">Feature</a>
+<a href="heatmap.html" aria-current="page">Heatmap</a>
+<a href="correlation.html">Correlation</a>
+<a href="volcano.html">Volcano</a>
+<a href="figure-settings.html">Figure settings</a>
+<a href="pathway.html">Pathway maps and export</a>
+</nav>
+<main id="content"><h1>Heatmap</h1>
+<p class="lead">Explore lipid class abundance patterns across samples with heatmaps.</p>
+<section aria-labelledby="class-heatmap"><h2 id="class-heatmap">Class heatmap</h2>
+<p>Open <strong>3. Analysis → Heatmap</strong> and select the <strong>Class heatmap</strong> tab.</p>
+<ol><li>Set <strong>Aggregation</strong> to <strong>sum</strong> for this example to summarize molecular abundances within each lipid class.</li><li>Under <strong>Samples on</strong>, select <strong>rows (y-axis)</strong> to display samples as rows and lipid classes as columns.</li><li>Under <strong>Scaling (required)</strong>, select <strong>Scale by feature (recommended)</strong>.</li><li>Enable <strong>Cluster samples</strong> and <strong>Cluster subclasses</strong> to cluster both dimensions.</li><li>Click <strong>Run</strong>.</li></ol>
+<figure class="screenshot"><a href="assets/heatmap-class.png"><img src="assets/heatmap-class.png" alt="Class heatmap settings with sum aggregation, samples on rows, scaling by feature, and sample and subclass clustering enabled, beside the resulting clustered heatmap." loading="lazy"></a><figcaption>Class heatmap with sum aggregation, feature scaling, and clustering of samples and lipid classes.</figcaption></figure>
+<h3>Read the heatmap</h3>
+<p>With the illustrated orientation, each row represents a sample and each column a lipid class. Feature scaling emphasizes relative variation across samples within each class. Use the color legend to interpret the scaled values. The dendrograms summarize similarity among samples and among lipid classes, while the sample annotation identifies the groups.</p>
+<figure class="screenshot"><a href="assets/heatmap-class-detail.png"><img src="assets/heatmap-class-detail.png" alt="Class heatmap with samples in rows, Ontology classes in columns, Female and Male sample annotations, and a scaled abundance legend." loading="lazy"></a><figcaption>Enlarged class heatmap with group annotation and color legend.</figcaption></figure><h3>Customize and save</h3>
+<p>Use <strong>Figure settings</strong> to adjust the heatmap appearance and <strong>Shared: colors / order</strong> to configure sample-group colors and display order. Click <strong>Download PDF</strong> in the Settings panel to save the heatmap.</p>
+</section>
+<section aria-labelledby="molecule-heatmap"><h2 id="molecule-heatmap">Molecule TopVar heatmap</h2>
+<p>Select the <strong>Molecule TopVar heatmap</strong> tab to explore variation at the individual lipid level.</p>
+<p>The supplied result displays samples as rows and individual lipid molecules as columns. The left <strong>SampleClass</strong> annotation identifies Female and Male samples, while the top <strong>LipidSubClass</strong> annotation identifies the lipid class of each molecule. The dendrograms show clustering in both dimensions.</p>
+<p>Use the <strong>TopVar_var_scaled</strong> legend to interpret relative values. Red indicates higher scaled values, purple indicates lower values, and white is near zero.</p><figure class="screenshot"><a href="assets/heatmap-molecule-result.png"><img src="assets/heatmap-molecule-result.png" alt="Molecules TopVar heatmap with clustered samples in rows, lipid molecules in columns, SampleClass and LipidSubClass annotations, and a scaled-value color legend." loading="lazy"></a><figcaption>Molecule TopVar heatmap with sample-group and lipid-class annotations.</figcaption></figure>
+</section><nav class="pager" aria-label="Previous and next chapters"><a href="feature.html">← Feature</a><a href="correlation.html">Correlation →</a></nav></main>
+<nav class="toc" aria-label="Page contents"><p>On this page</p><a href="#class-heatmap">Class heatmap</a><a href="#molecule-heatmap">Molecule TopVar heatmap</a></nav>
+</div>
+<footer>MSLipidMapper · <a href="https://github.com/systemsomicslab">Systemomics Lab</a></footer>
+</body>
+</html>

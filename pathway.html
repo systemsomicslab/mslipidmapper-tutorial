@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="View abundances aggregated by lipid class on a pathway map and save your results.">
+<title>Pathway maps and export | MSLipidMapper Tutorial</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to main content</a>
+<header><div class="top"><a class="brand" href="index.html"><strong>MSLipidMapper</strong><span>Tutorial</span></a><a class="source" href="https://github.com/systemsomicslab/MSLipidMapper">GitHub ↗</a></div></header>
+<div class="layout">
+<nav class="chapters" aria-label="Chapters"><p>Tutorial</p><a href="index.html">Introduction</a>
+<a href="setup.html">Installation and setup</a>
+<a href="import.html">Import data</a>
+<a href="normalization.html">Normalization</a>
+<a href="analysis.html">Analysis overview</a>
+<a href="pca.html">PCA</a>
+<a href="oplsda.html">OPLS-DA</a>
+<a href="feature.html">Feature</a>
+<a href="heatmap.html">Heatmap</a>
+<a href="correlation.html">Correlation</a>
+<a href="volcano.html">Volcano</a>
+<a href="figure-settings.html">Figure settings</a>
+<a href="pathway.html" aria-current="page">Pathway maps and export</a>
+</nav>
+<main id="content">
+<h1>Pathway maps and export</h1>
+<p class="lead">View abundances aggregated by lipid class on a pathway map and save your results.</p>
+<section aria-labelledby="map">
+<h2 id="map">View lipid metabolism pathways</h2>
+<p>Open <strong>3. Analysis → Pathway analysis</strong>. The example shows the <strong>sphingolipids</strong> network before data projection. Its status reads <strong>Not projected - run Pathway Mapping</strong>.</p>
+<figure class="screenshot"><a href="assets/pathway-before-mapping.png"><img src="assets/pathway-before-mapping.png" alt="Pathway analysis showing the sphingolipids network before projection, with a Not projected status, Male / Female comparison, and Pathway Mapping button." loading="lazy"></a><figcaption>The sphingolipids network before mapping abundance data.</figcaption></figure>
+<ol><li>Review the selected pathway network and the comparison shown above it. This example displays <strong>Male / Female</strong>.</li><li>Click <strong>Pathway Mapping</strong> to open the mapping workflow.</li><li>Review the mapping settings and apply them to display the abundance data on the network.</li><li>Enable <strong>Popup panels</strong> and click a node to inspect its data. Use <strong>Panel settings</strong> to choose panel content.</li></ol>
+<p>Use <strong>Fit network</strong> to fit the graph into the visible area.</p>
+<h3>Configure pathway display</h3>
+<p>In <strong>Pathway settings</strong>, open the <strong>Display</strong> tab.</p>
+<ol><li>Under <strong>Select pathway</strong>, choose a network. The screenshot selects <strong>sphingolipids</strong>.</li><li>Under <strong>Class aggregation</strong>, choose how molecular abundances are summarized for each lipid class. The example uses <strong>sum</strong>.</li><li>Set <strong>Heatmap: top molecules by abundance</strong> to the number of molecules to show. The screenshot uses <code>20</code>.</li><li>Click <strong>Apply settings</strong>.</li><li>Run <strong>Pathway Mapping</strong> to regenerate the projected plots with the applied settings.</li></ol>
+<p>To choose the projected plot type, use <strong>Figure settings → Layout / display</strong>, then run <strong>Pathway Mapping</strong>. When working with additional omics data, the Display tab also provides <strong>Overlay multi-omics data</strong>.</p>
+<figure class="screenshot"><a href="assets/pathway-settings-display.png"><img src="assets/pathway-settings-display.png" style="max-width:360px;margin-inline:auto" alt="Pathway settings Display tab with sphingolipids selected, Class aggregation set to sum, Heatmap top molecules by abundance set to 20, and Apply settings." loading="lazy"></a><figcaption>Display settings for the sphingolipid pathway. Apply settings and rerun Pathway Mapping to refresh the projection.</figcaption></figure>
+<h3>Configure comparisons and popup panels</h3>
+<p>Open the <strong>Comparison / Panels</strong> tab. In this example, <strong>Group A</strong> is Female and <strong>Group B</strong> is Male. Direction is calculated as <strong>B / A</strong>, so an increase corresponds to higher abundance in Male samples.</p>
+<ol><li>Select the two groups and the statistical <strong>Test</strong>. The screenshot uses <strong>Wilcoxon</strong>.</li><li>Choose whether to use <strong>BH-adjusted p-value (FDR)</strong>, and set <strong>Alpha</strong>. The example leaves correction unchecked and uses <code>0.05</code>.</li><li>Set <strong>Minimum fold change for direction summaries (×)</strong>. The example uses <code>1.2</code>. Direction summaries require both the fold-change cutoff and the selected significance criterion. Gray includes species failing either criterion. BH adjustment covers all tested species in the current filtered dataset.</li><li>Choose <strong>Panel content</strong> for the popup panels. The screenshot selects <strong>Heatmap</strong>. Panel content switches immediately without remapping.</li><li>Select the <strong>Input assay scale</strong> matching your data. The example uses <strong>Non-negative abundance</strong>. Set <strong>Top species per direction</strong> for species-change panels, shown as <code>5</code> here.</li><li>Click <strong>Apply settings</strong> to commit the comparison settings, then rerun <strong>Pathway Mapping</strong> to refresh projected data as needed.</li></ol>
+<p>Fold-change bars represent effect size. Use the significance criterion and its annotations to assess statistical significance. Fold-change axes adapt independently to each popup panel, so compare their tick values.</p><figure class="screenshot"><a href="assets/pathway-settings-comparison.png"><img src="assets/pathway-settings-comparison.png" style="max-width:360px;margin-inline:auto" alt="Comparison and Panels tab showing Female and Male, Wilcoxon test, alpha 0.05, fold-change cutoff 1.2, Heatmap panel content, and non-negative abundance input scale." loading="lazy"></a><figcaption>Configure the comparison, significance criterion, and popup panel content.</figcaption></figure><h3>Filter the mapped lipids</h3>
+<p>Open <strong>Filters</strong> to restrict the lipid molecules used in the pathway view.</p>
+<ul><li>Check <strong>Exclude molecules with any odd-carbon chain or SPB</strong> to remove molecules containing an odd-carbon chain or sphingoid base.</li><li>Select one or more <strong>Chain / SPB code(s) (multiple)</strong>. Use <strong>Require ALL selected chain codes</strong> when each retained molecule must contain every selected code.</li><li>Use <strong>C</strong>, <strong>DB</strong>, and <strong>O</strong> to specify chain carbon count, double-bond count, and oxygen count.</li><li>Use <strong>Reset</strong> to clear the chain filter controls.</li></ul>
+<p>Click <strong>Apply settings</strong> and rerun <strong>Pathway Mapping</strong> to update the projection for the selected lipids.</p>
+<p>Under <strong>Enrichment overlay</strong>, use <strong>Import enrichment CSV</strong> to load enrichment results. Apply settings to map enrichment molecules to lipid classes. Double borders identify enriched classes. Use <strong>Clear enrichment</strong> to remove the overlay.</p><figure class="screenshot"><a href="assets/pathway-settings-filters.png"><img src="assets/pathway-settings-filters.png" style="max-width:360px;margin-inline:auto" alt="Filters tab with odd-carbon exclusion, chain and SPB code selection, C DB O fields, Reset, and enrichment CSV upload." loading="lazy"></a><figcaption>Set chain filters or import an enrichment overlay.</figcaption></figure><h3>Import and edit pathway networks</h3>
+<p>Open <strong>Manage</strong>. Under <strong>Import pathways</strong>, click <strong>Browse...</strong> to import a <strong>CYJS / GML / GPML</strong> file. Imported pathways are added immediately. Select the imported network in the <strong>Display</strong> tab.</p>
+<p>To edit a network, select nodes or edges and click <strong>Delete selected elements</strong>, or press Delete. You can also Ctrl + right-click a node or edge to delete it. Use <strong>Delete current pathway...</strong> to remove a pathway.</p><figure class="screenshot"><a href="assets/pathway-settings-manage.png"><img src="assets/pathway-settings-manage.png" style="max-width:360px;margin-inline:auto" alt="Manage tab with CYJS GML GPML import, Delete selected elements, and Delete current pathway controls." loading="lazy"></a><figcaption>Import a pathway network or edit the current pathway.</figcaption></figure><h3>Review the mapped network</h3>
+<p>After mapping, confirm that the status changes to <strong>Projected</strong>. Nodes with mapped data display abundance plots. In this example, the comparison is <strong>Male / Female</strong>, and the node plots show the Female and Male sample distributions.</p>
+<ol><li>Check <strong>Species change directions</strong> to display the molecular-species direction summaries above the nodes.</li><li>Check <strong>Highlight significant nodes</strong> to display significance highlighting on node borders.</li><li>Read the direction legend and the statistical method and threshold shown in the toolbar. The supplied screenshot displays <strong>wilcox · p ≤ 0.05</strong>.</li></ol>
+<p>The legend uses red for increases, blue for decreases, and gray for other or untested results. Interpret directions relative to the displayed comparison. A blank node has no abundance plot in the current projection.</p>
+<figure class="screenshot"><a href="assets/pathway-projected.png"><img src="assets/pathway-projected.png" alt="Projected sphingolipid pathway with Female and Male abundance plots inside nodes, species change-direction bars, and significant-node border highlighting enabled." loading="lazy"></a><figcaption>Mapped sphingolipid pathway with species change directions and significant-node highlighting enabled.</figcaption></figure>
+<h3>Inspect molecular species in popup panels</h3>
+<ol><li>Enable <strong>Popup panels</strong>.</li><li>Click a node with mapped data to open its detail panel. Click additional nodes to compare their panels.</li><li>Use <strong>Panel settings</strong> to select the panel content. The example shows <strong>Species changes</strong>.</li><li>Drag panel headers to move panels and drag their corners to resize them. Use <strong>Arrange panels</strong> to arrange open panels.</li><li>Click the × in a panel header to close that panel, or <strong>Close all panels</strong> to close them together.</li></ol>
+<p>Each Species changes panel lists individual lipid species and their log₂ fold changes for the displayed comparison. Here, <strong>Male / Female</strong> means positive values indicate higher abundance in Male samples and negative values indicate higher abundance in Female samples. Red bars show increases and blue bars show decreases. Asterisks mark species meeting the current significance criterion displayed in the toolbar.</p>
+<figure class="screenshot"><a href="assets/pathway-popup-panels.png"><img src="assets/pathway-popup-panels.png" alt="Sphingolipid pathway with popup panels for Cer_NDS, Cer_NS, HexCer_NS, and Hex2Cer showing molecular-species log2 fold changes for Male versus Female." loading="lazy"></a><figcaption>Compare molecular-species changes across several lipid classes using popup panels.</figcaption></figure>
+<h3>View heatmaps in popup panels</h3>
+<p>Use <strong>Panel settings</strong> to choose heatmap content for the popup panels. The example below shows heatmaps for Cer_NDS, Cer_NS, HexCer_NS, and Hex2Cer.</p>
+<p>Each heatmap displays lipid species in rows and samples in columns, with Female and Male groups labeled above the matrix. Read relative abundance patterns using the Z-score legend in each panel. Red indicates higher standardized values and purple indicates lower standardized values.</p>
+<p>Resize a panel to inspect its labels and patterns more closely. Keep several panels open to compare species-level patterns across pathway classes.</p>
+<figure class="screenshot"><a href="assets/pathway-popup-heatmaps.png"><img src="assets/pathway-popup-heatmaps.png" alt="Projected sphingolipid pathway with heatmap popup panels for Cer_NDS, Cer_NS, HexCer_NS, and Hex2Cer, displaying molecular species across Female and Male samples." loading="lazy"></a><figcaption>Heatmap popup panels show molecular-species abundance patterns across samples within each lipid class.</figcaption></figure>
+<p><a href="https://github.com/systemsomicslab/MSLipidMapper/blob/178a6e9c1d9c809c4e57834aca4fce86e7451503/docs/pathway-workspace.md">Pathway workspace documentation</a></p>
+</section>
+<section aria-labelledby="export"><h2 id="export">Export figures and save your project</h2>
+<h3>Save the pathway figure</h3>
+<ol><li>Complete Pathway Mapping and arrange the network and any open popup panels.</li><li>Click <strong>Save</strong> in the pathway toolbar.</li><li>Select <strong>Network PDF</strong> to export the network, <strong>PDF with panels / popups</strong> to include popup panels, or <strong>Figure SVG (popup panels)</strong> for an SVG figure with popup panels.</li></ol>
+<h3>Save a project for later</h3><p>Use the export controls on each analysis page to save figures. To save your workspace, open <strong>Project file</strong> and select <strong>Prepare project file</strong>. When the file is ready, select <strong>Download prepared project</strong> to save the <code>.mslm.rds</code> file. To resume your work, select <strong>Restore project (.mslm.rds)</strong> on the same page.</p><p><a href="https://github.com/systemsomicslab/MSLipidMapper/blob/178a6e9c1d9c809c4e57834aca4fce86e7451503/docs/project-files.md">What a project file contains</a></p></section>
+<section aria-labelledby="batch"><h2 id="batch">Export a pathway PDF from the command line</h2><p>Use a YAML configuration file to generate pathway PDFs with the same settings from the command line.</p><pre><code>Rscript inst/scripts/mslipidmapper.R pathway --config inst/extdata/examples/pathway-cli.yml</code></pre><p>Install the package, then run this example from the MSLipidMapper source directory. <a href="https://github.com/systemsomicslab/MSLipidMapper/blob/178a6e9c1d9c809c4e57834aca4fce86e7451503/README.md#command-line-pathway-mapping">Command-line options</a></p></section>
+<nav class="pager" aria-label="Previous and next chapters"><a href="figure-settings.html">← Figure settings</a></nav>
+</main>
+<nav class="toc" aria-label="Page contents"><p>On this page</p><a href="#map">View lipid metabolism pathways</a>
+<a href="#export">Export figures and save your project</a>
+<a href="#batch">Export a pathway PDF from the command line</a></nav>
+</div>
+<footer>MSLipidMapper · <a href="https://github.com/systemsomicslab">Systemomics Lab</a></footer>
+</body>
+</html>

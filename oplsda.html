@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Compare sample groups and inspect VIP features with OPLS-DA.">
+<title>OPLS-DA | MSLipidMapper Tutorial</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to main content</a>
+<header><div class="top"><a class="brand" href="index.html"><strong>MSLipidMapper</strong><span>Tutorial</span></a><a class="source" href="https://github.com/systemsomicslab/MSLipidMapper">GitHub ↗</a></div></header>
+<div class="layout">
+<nav class="chapters" aria-label="Chapters"><p>Tutorial</p><a href="index.html">Introduction</a>
+<a href="setup.html">Installation and setup</a>
+<a href="import.html">Import data</a>
+<a href="normalization.html">Normalization</a>
+<a href="analysis.html">Analysis overview</a>
+<a href="pca.html">PCA</a>
+<a href="oplsda.html" aria-current="page">OPLS-DA</a>
+<a href="feature.html">Feature</a>
+<a href="heatmap.html">Heatmap</a>
+<a href="correlation.html">Correlation</a>
+<a href="volcano.html">Volcano</a>
+<a href="figure-settings.html">Figure settings</a>
+<a href="pathway.html">Pathway maps and export</a>
+</nav>
+<main id="content">
+<h1>OPLS-DA</h1>
+<p class="lead">Compare sample groups and inspect VIP features with OPLS-DA.</p>
+<section aria-labelledby="oplsda">
+<h2 id="oplsda">OPLS-DA</h2>
+<p>Open <strong>3. Analysis → OPLS-DA</strong> to model differences between the selected sample groups and inspect variable importance in projection (VIP).</p>
+<h3 id="configure-and-run-the-model">Configure and run the model</h3>
+<ol><li>Select <strong>Lipid</strong> under <strong>Dataset</strong>.</li><li>Under <strong>Groups to compare (class)</strong>, select <strong>Female</strong> and <strong>Male</strong> for this example. These groups come from the primary grouping column chosen during metadata import.</li><li>Set <strong>VIP threshold</strong> to <code>1</code>, <strong>Top VIP</strong> to <code>20</code>, <strong>Heatmap top</strong> to <code>25</code>, and <strong>Heatmap Z-limit</strong> to <code>2</code>.</li><li>Check the sample counts below <strong>Run</strong>. This example has 24 Female and 24 Male samples, with seven-fold cross-validation and 50 permutations.</li><li>Click <strong>Run</strong> to fit the model and generate the plots.</li></ol>
+<figure class="screenshot"><a href="assets/oplsda-settings-results.png"><img src="assets/oplsda-settings-results.png" alt="OPLS-DA settings comparing 24 Female and 24 Male samples, with a score plot and Top 20 VIP plot." loading="lazy"></a><figcaption>OPLS-DA settings, score plot, and VIP plot for the sex-based comparison.</figcaption></figure>
+<h3 id="read-the-score-plot">Read the score plot</h3>
+<p>Each point represents a sample, colored by group. The horizontal axis shows the predictive score and the vertical axis shows the orthogonal score. In the supplied example, the plot reports R2Y = 0.981 and Q2 = 0.961. R2Y summarizes model fit to the response, while Q2 summarizes cross-validated predictive performance. Interpret these values together with model validation and the experimental design.</p>
+<h3 id="read-the-vip-plot">Read the VIP plot</h3>
+<p>VIP values summarize feature importance in the model. The threshold filters features by VIP, and <strong>Top VIP</strong> controls how many are displayed. In this comparison, red bars extend left for features with higher mean abundance in Female samples, and green bars extend right for features with higher mean abundance in Male samples. Bar length represents VIP magnitude. Direction is assigned from group mean abundance.</p>
+<p>The VIP plot displays lipid names from the feature annotations, allowing you to identify the features contributing to the model.</p>
+<h3 id="export-the-results">Export the results</h3>
+<p>Use <strong>Download PDF</strong> beneath the score and VIP plots to save the figures, and <strong>Download VIP CSV</strong> to export the VIP table. Adjust appearance with <strong>Figure settings</strong> and group colors with <strong>Shared: colors / order</strong>.</p>
+<h3 id="inspect-the-vip-heatmap">Inspect the VIP heatmap</h3>
+<p>Scroll down to <strong>VIP heatmap (top variables)</strong> to view the selected features across samples.</p>
+<p>Rows show the selected lipid features and columns show samples. The top annotation identifies the Female and Male groups. The dendrogram above the columns summarizes sample clustering, and the green annotation on the left shows each feature's VIP magnitude.</p>
+<p>Cell colors represent values standardized within each feature. Red indicates values above that feature's mean, purple indicates values below it, and white is near the mean. In this example, the Z-score color range is limited to −2 to 2.</p>
+<figure class="screenshot"><a href="assets/oplsda-vip-heatmap.png"><img src="assets/oplsda-vip-heatmap.png" alt="OPLS-DA VIP heatmap with lipid features in rows, clustered samples in columns, Female and Male group annotations, a green VIP magnitude annotation, and a Z-score color scale from minus two to two." loading="lazy"></a><figcaption>VIP heatmap for the Female–Male comparison, showing feature abundance patterns and VIP magnitudes.</figcaption></figure>
+<p>Click <strong>Download heatmap PDF</strong> below the heatmap to save the figure.</p>
+</section><p>See <a href="figure-settings.html">Figure settings</a> for shared group colors and display order.</p>
+<nav class="pager" aria-label="Previous and next chapters"><a href="pca.html">← PCA</a><a href="feature.html">Feature →</a></nav>
+</main>
+<nav class="toc" aria-label="Page contents"><p>On this page</p><a href="#oplsda">OPLS-DA</a><a href="#configure-and-run-the-model">Configure and run the model</a><a href="#read-the-score-plot">Read the score plot</a><a href="#read-the-vip-plot">Read the VIP plot</a><a href="#export-the-results">Export the results</a><a href="#inspect-the-vip-heatmap">Inspect the VIP heatmap</a></nav>
+</div>
+<footer>MSLipidMapper · <a href="https://github.com/systemsomicslab">Systemomics Lab</a></footer>
+</body>
+</html>

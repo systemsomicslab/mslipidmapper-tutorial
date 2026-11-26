@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Explore sample variation and feature contributions with principal component analysis.">
+<title>PCA | MSLipidMapper Tutorial</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to main content</a>
+<header><div class="top"><a class="brand" href="index.html"><strong>MSLipidMapper</strong><span>Tutorial</span></a><a class="source" href="https://github.com/systemsomicslab/MSLipidMapper">GitHub ↗</a></div></header>
+<div class="layout">
+<nav class="chapters" aria-label="Chapters"><p>Tutorial</p><a href="index.html">Introduction</a>
+<a href="setup.html">Installation and setup</a>
+<a href="import.html">Import data</a>
+<a href="normalization.html">Normalization</a>
+<a href="analysis.html">Analysis overview</a>
+<a href="pca.html" aria-current="page">PCA</a>
+<a href="oplsda.html">OPLS-DA</a>
+<a href="feature.html">Feature</a>
+<a href="heatmap.html">Heatmap</a>
+<a href="correlation.html">Correlation</a>
+<a href="volcano.html">Volcano</a>
+<a href="figure-settings.html">Figure settings</a>
+<a href="pathway.html">Pathway maps and export</a>
+</nav>
+<main id="content">
+<h1>PCA</h1>
+<p class="lead">Explore sample variation and feature contributions with principal component analysis.</p>
+<section aria-labelledby="pca">
+<h2 id="pca">Principal component analysis (PCA)</h2>
+<p>Open <strong>3. Analysis → PCA</strong> to explore variation across samples and the lipid features contributing to each principal component.</p>
+<h3 id="configure-and-run-pca">Configure and run PCA</h3>
+<ol><li>Select <strong>Lipid</strong> under <strong>Dataset</strong>.</li><li>Under <strong>Scores axes (PC)</strong>, set <strong>X</strong> to <code>1</code> and <strong>Y</strong> to <code>2</code> to display PC1 against PC2.</li><li>Under <strong>Loadings bar plot</strong>, set <strong>PC index</strong> to <code>1</code> and <strong>Top-N</strong> to <code>10</code>. The bar plot displays the ten most positive and ten most negative loadings for PC1.</li><li>For the loading heatmap, use <strong>Heatmap top (total)</strong> of <code>20</code> and <strong>Heatmap Z-limit</strong> of <code>2</code> for this example.</li><li>Click <strong>Run</strong>.</li></ol>
+<figure class="screenshot"><a href="assets/pca-settings-results.png"><img src="assets/pca-settings-results.png" alt="PCA settings with PC1 and PC2 score axes, PC1 loadings and Top-N 10, alongside a score plot colored Female and Male and a signed loading bar plot." loading="lazy"></a><figcaption>PCA settings and results for the lipid demo, with samples grouped by Sex.</figcaption></figure>
+<h3 id="read-the-score-and-loading-plots">Read the score and loading plots</h3>
+<p>Each point in the score plot represents a sample. Colors follow the current <code>class</code> values. In this example, metadata import set the groups to <strong>Female</strong> and <strong>Male</strong>. The axis labels report the variance explained by each component, with PC1 explaining 37.22% and PC2 explaining 15.23% in the supplied screenshot.</p>
+<p>Examine the relative positions of samples, variation within groups, and any isolated points. PCA describes the major variation in the dataset. Assess group differences with the statistical analysis appropriate for your experiment.</p>
+<p>The loading plot shows features with large positive and negative loadings on the selected component. Green bars indicate positive loadings and red bars indicate negative loadings. Interpret each feature's sign relative to the corresponding score axis. Changing <strong>PC index</strong> lets you inspect another component.</p>
+<h3 id="inspect-the-loading-heatmap">Inspect the loading heatmap</h3>
+<p>Scroll down to <strong>Loading heatmap (consistent with loading plot variables)</strong>. Rows represent lipid features selected from the loadings, and columns represent samples. The top annotation shows the current sample groups. The left annotation shows loading direction on the selected component, with red for negative and green for positive loadings.</p>
+<p>Cell colors show abundance standardized within each lipid feature. Red indicates values above that feature's mean, purple indicates values below it, and white is near the mean. The example uses a <strong>Heatmap Z-limit</strong> of <code>2</code>, so standardized values outside the range from −2 to 2 are clipped to the color limits. The dendrogram above the columns shows sample clustering.</p>
+<figure class="screenshot"><a href="assets/pca-loading-heatmap.png"><img src="assets/pca-loading-heatmap.png" alt="PCA loading heatmap with lipid features in rows, clustered samples in columns, Female and Male group annotations, a row-wise Z-score color scale, and negative and positive loading annotations." loading="lazy"></a><figcaption>Loading heatmap for PC1, showing the selected features across samples with group and loading-direction annotations.</figcaption></figure>
+<p>Click <strong>Download heatmap PDF</strong> beneath the heatmap to save it.</p>
+<h3 id="customize-and-export">Customize and export</h3>
+<p>Use <strong>Figure settings</strong> to adjust appearance and <strong>Shared: colors / order</strong> to set group colors and ordering. Use <strong>Download PDF</strong> beneath each plot to save it and <strong>Download loadings CSV</strong> to export the loading values.</p>
+</section><p>See <a href="figure-settings.html">Figure settings</a> for shared group colors and display order.</p>
+<nav class="pager" aria-label="Previous and next chapters"><a href="analysis.html">← Analysis overview</a><a href="oplsda.html">OPLS-DA →</a></nav>
+</main>
+<nav class="toc" aria-label="Page contents"><p>On this page</p><a href="#pca">Principal component analysis (PCA)</a><a href="#configure-and-run-pca">Configure and run PCA</a><a href="#read-the-score-and-loading-plots">Read the score and loading plots</a><a href="#inspect-the-loading-heatmap">Inspect the loading heatmap</a><a href="#customize-and-export">Customize and export</a></nav>
+</div>
+<footer>MSLipidMapper · <a href="https://github.com/systemsomicslab">Systemomics Lab</a></footer>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Inspect associations between lipid abundances across samples.">
+<title>Correlation | MSLipidMapper Tutorial</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to main content</a>
+<header><div class="top"><a class="brand" href="index.html"><strong>MSLipidMapper</strong><span>Tutorial</span></a><a class="source" href="https://github.com/systemsomicslab/MSLipidMapper">GitHub ↗</a></div></header>
+<div class="layout">
+<nav class="chapters" aria-label="Chapters"><p>Tutorial</p><a href="index.html">Introduction</a>
+<a href="setup.html">Installation and setup</a>
+<a href="import.html">Import data</a>
+<a href="normalization.html">Normalization</a>
+<a href="analysis.html">Analysis overview</a>
+<a href="pca.html">PCA</a>
+<a href="oplsda.html">OPLS-DA</a>
+<a href="feature.html">Feature</a>
+<a href="heatmap.html">Heatmap</a>
+<a href="correlation.html" aria-current="page">Correlation</a>
+<a href="volcano.html">Volcano</a>
+<a href="figure-settings.html">Figure settings</a>
+<a href="pathway.html">Pathway maps and export</a>
+</nav>
+<main id="content"><h1>Correlation</h1><p class="lead">Inspect associations between lipid abundances across samples.</p><section aria-labelledby="single"><h2 id="single">Compare two lipids</h2>
+<p>Open <strong>3. Analysis → Correlation</strong> and select the <strong>Single</strong> tab.</p>
+<ol><li>Set <strong>Mode</strong> to <strong>Lipid vs lipid</strong>.</li><li>Select <strong>PC 16:0_20:4</strong> under <strong>Lipid (X)</strong> and <strong>PC 16:0_22:6</strong> under <strong>Lipid (Y)</strong> for this example.</li><li>Select <strong>Pearson</strong> or <strong>Spearman</strong> under <strong>Method</strong>. The screenshot uses Pearson.</li><li>Under <strong>Transform</strong>, select <strong>Log2 (pseudo-count for zeros)</strong> as shown, or <strong>None (raw values)</strong> to analyze the input values directly.</li><li>Set <strong>View</strong> to <strong>Static</strong> and click <strong>Run</strong>.</li></ol><figure class="screenshot"><a href="assets/correlation-single.png"><img src="assets/correlation-single.png" alt="Correlation Single tab comparing PC 16:0_20:4 and PC 16:0_22:6 using Pearson correlation and log2 transformation, with a scatter plot colored Female and Male." loading="lazy"></a><figcaption>Pearson correlation between two lipids after log2 transformation.</figcaption></figure></section><section aria-labelledby="interpret"><h2 id="interpret">Read the scatter plot</h2>
+<p>Each point represents a sample. The axes show the selected lipids after the chosen transformation, and colors identify the sample groups. The plot reports the correlation coefficient and p-value. In this screenshot, <code>r = 0.891</code>, indicating a positive association across the plotted samples.</p>
+<p>The example includes both Female and Male samples. Consider group structure when interpreting the overall correlation, since differences between groups can contribute to the association.</p>
+<p>Pearson measures linear association, while Spearman measures rank-based association. Choose the method and transformation to match your analysis.</p></section>
+<section aria-labelledby="export"><h2 id="export">Customize and export</h2>
+<p>Use <strong>Figure settings</strong> to adjust appearance and <strong>Shared: colors / order</strong> to configure group colors. Click <strong>Download ggplot (PDF)</strong> to save the static plot.</p></section><nav class="pager" aria-label="Previous and next chapters"><a href="heatmap.html">← Heatmap</a><a href="volcano.html">Volcano →</a></nav></main>
+<nav class="toc" aria-label="Page contents"><p>On this page</p><a href="#single">Compare two lipids</a><a href="#interpret">Read the scatter plot</a><a href="#export">Customize and export</a></nav>
+</div>
+<footer>MSLipidMapper · <a href="https://github.com/systemsomicslab">Systemomics Lab</a></footer>
+</body>
+</html>
